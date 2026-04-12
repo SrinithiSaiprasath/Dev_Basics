@@ -1,0 +1,157 @@
+REST API HTTP Status Codes Guide
+
+REST APIs use HTTP status codes to indicate the result of a client’s request.
+
+Status Code Categories
+
+1xx : Informational (request received, processing continues)
+2xx : Success
+3xx : Redirection (further action needed)
+4xx : Client-side errors
+5xx : Server-side errors
+
+---
+
+1xx — Informational
+
+Indicates the request has been received and is still being processed.
+
+100 Continue
+The server received request headers and expects the body.
+Example: Uploading a large file — server tells client to continue sending data.
+
+101 Switching Protocols
+Server switches protocol based on client request.
+Example: Upgrading HTTP connection to WebSocket for real-time chat.
+
+102 Processing (WebDAV)
+Request is being processed, no response yet.
+Example: Bulk file operation like copying thousands of files.
+
+103 Early Hints
+Hints to preload resources before full response.
+Example: Browser starts loading CSS/JS before full page is received.
+
+---
+
+2xx — Success
+
+Request was successfully received and processed.
+
+200 OK
+Request succeeded.
+Example: GET /users/123 returns user data.
+
+201 Created
+New resource created.
+Example: POST /users creates a new user.
+
+202 Accepted
+Request accepted but processing is not complete.
+Example: Report generation running in background.
+
+203 Non-Authoritative Information
+Response from cached or third-party source.
+Example: Proxy returns cached API response.
+
+204 No Content
+Request succeeded, no response body.
+Example: DELETE /posts/45 removes a post successfully.
+
+205 Reset Content
+Client should reset UI/form.
+Example: Form submission completed and UI should clear fields.
+
+---
+
+3xx — Redirection
+
+Further action required to complete request.
+
+300 Multiple Choices
+Multiple response options available.
+Example: API provides JSON or XML options.
+
+301 Moved Permanently
+Resource permanently moved.
+Example: /api/v1/users moved to /api/v2/users.
+
+302 Found (Temporary Redirect)
+Resource temporarily moved.
+Example: Redirect after login to dashboard.
+
+303 See Other
+Response available via different URI using GET.
+Example: Redirect to confirmation page after form submission.
+
+305 Use Proxy
+Request must go through proxy.
+Example: Company network requires proxy for API access.
+
+---
+
+4xx — Client Errors
+
+Error caused by client-side issues.
+
+400 Bad Request
+Invalid request syntax.
+Example: Missing required fields in request body.
+
+401 Unauthorized
+Authentication required or failed.
+Example: Accessing API without token.
+
+402 Payment Required
+Reserved for payment-based APIs.
+Example: Premium API requires subscription.
+
+403 Forbidden
+Client lacks permission.
+Example: User trying to delete another user's data.
+
+404 Not Found
+Resource not found.
+Example: Requesting a non-existent product.
+
+---
+
+5xx — Server Errors
+
+Server failed to process a valid request.
+
+500 Internal Server Error
+Generic server failure.
+Example: Database crash during request.
+
+501 Not Implemented
+Method not supported.
+Example: Using unsupported HTTP method like PATCH.
+
+502 Bad Gateway
+Invalid response from upstream server.
+Example: API gateway gets corrupted response.
+
+503 Service Unavailable
+Server unavailable or overloaded.
+Example: Server under maintenance.
+
+504 Gateway Timeout
+Upstream server timeout.
+Example: Dependent service takes too long to respond.
+
+505 HTTP Version Not Supported
+HTTP version not supported.
+Example: Client uses unsupported HTTP version.
+
+---
+
+Summary
+
+1xx → Request in progress
+2xx → Success
+3xx → Redirection
+4xx → Client error
+5xx → Server error
+
+---
